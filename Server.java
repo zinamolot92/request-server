@@ -10,10 +10,13 @@ public class Server {
 
     private static List<String> requests = new ArrayList<>();
     private static int nextNumber = 1;
-    private static final String DATA_FILE = "requests.txt";
-    private static final String NUMBER_FILE = "number.txt";
+    private static final String DATA_FILE = "/data/requests.txt";
+    private static final String NUMBER_FILE = "/data/number.txt";
 
     public static void main(String[] args) throws Exception {
+        // Создаем папку для данных
+        new File("/data").mkdirs();
+
         // Загружаем сохраненные заявки
         loadData();
 
@@ -67,7 +70,7 @@ public class Server {
                     response = "{\"requests\": " + requests.size() + "}";
                 }
                 else {
-                    response = "Server is running! Requests: " + requests.size();
+                    response = "✅ Сервер работает! Заявок: " + requests.size();
                     exchange.getResponseHeaders().set("Content-Type", "text/plain");
                 }
 
@@ -80,8 +83,8 @@ public class Server {
         });
 
         server.start();
-        System.out.println("Server started on port " + port);
-        System.out.println("Requests count: " + requests.size());
+        System.out.println("🚀 Server started on port " + port);
+        System.out.println("📋 Requests count: " + requests.size());
     }
 
     private static void loadData() {
@@ -96,6 +99,7 @@ public class Server {
                     }
                 }
                 reader.close();
+                System.out.println("📂 Loaded " + requests.size() + " requests");
             }
 
             File numFile = new File(NUMBER_FILE);
