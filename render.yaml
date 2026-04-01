@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: request-server
+    runtime: java
+    buildCommand: ./gradlew build
+    startCommand: java -jar build/libs/request-server.jar
+    envVars:
+      - key: PORT
+        value: 8080
