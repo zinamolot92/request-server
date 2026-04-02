@@ -11,7 +11,7 @@ public class Server {
     
     // ЗАМЕНИТЕ НА ВАШ ДОМАШНИЙ IP АДРЕС
     // КОГДА СМЕНИТЕ IP - НУЖНО ОБНОВИТЬ КОД И ПЕРЕЗАЛИТЬ НА GITHUB
-    private static final String DATA_SERVER = "http://192.168.0.235:8081";  // ← ВАШ IP!
+    private static final String DATA_SERVER = "https://loose-sloths-cough.loca.lt"; 
     
     public static void main(String[] args) throws Exception {
         int port = Integer.parseInt(System.getenv().getOrDefault("PORT", "8080"));
